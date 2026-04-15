@@ -13,7 +13,6 @@ class KreditController extends Controller
 
     public function hitung(Request $request)
     {
-        // Validasi input
         $validated = $request->validate([
             'harga_mobil' => 'required|numeric|min:1',
             'dp'          => 'required|numeric|min:1|max:99',
@@ -24,13 +23,11 @@ class KreditController extends Controller
         $dpPersen   = $request->dp;
         $tenorTahun = $request->tenor;
 
-        // Perhitungan
         $bunga      = $hargaMobil * 0.20;
         $dpNominal  = $hargaMobil * ($dpPersen / 100);
         $tenorBulan = $tenorTahun * 12;
         $angsuran   = (($hargaMobil + $bunga) - $dpNominal) / $tenorBulan;
 
-        // Kembalikan JSON (untuk AJAX)
         return response()->json([
             'success'    => true,
             'hargaMobil' => $hargaMobil,
@@ -42,7 +39,7 @@ class KreditController extends Controller
             'angsuran'   => $angsuran,
         ]);
     }
-    // Tambahkan method ini
+    
     public function about()
     {
         return view('pages.about');

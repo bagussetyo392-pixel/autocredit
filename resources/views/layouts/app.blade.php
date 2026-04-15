@@ -7,23 +7,42 @@
     <title>AutoCredit — Simulasi Kredit Mobil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('android-chrome-192x192.png') }}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #0D0D0D;
             color: #F0F0F0;
         }
 
-        h1, h2, h3, h4, h5, .font-display {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-display {
             font-family: 'Playfair Display', serif;
         }
 
-        /* ========================= */
-        /* NPROGRESS */
-        /* ========================= */
+
         #nprogress-bar {
             position: fixed;
             top: 0;
@@ -36,9 +55,6 @@
             pointer-events: none;
         }
 
-        /* ========================= */
-        /* SCROLL TO TOP BUTTON */
-        /* ========================= */
         #scrollTopBtn {
             position: fixed;
             bottom: 30px;
@@ -58,7 +74,6 @@
 
             z-index: 9999;
 
-            /* ANIMATION (hidden state) */
             opacity: 0;
             transform: translateY(20px) scale(0.8);
             pointer-events: none;
@@ -66,20 +81,17 @@
             transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* SHOW STATE */
         #scrollTopBtn.show {
             opacity: 1;
             transform: translateY(0) scale(1);
             pointer-events: auto;
         }
 
-        /* HOVER */
         #scrollTopBtn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 12px #E8FF47;
         }
 
-        /* SVG circle */
         #scrollTopBtn svg {
             position: absolute;
             top: 0;
@@ -115,10 +127,8 @@
 
     <x-footer />
 
-    <!-- Loading bar -->
     <div id="nprogress-bar"></div>
 
-    <!-- Scroll To Top Button -->
     <button id="scrollTopBtn">
         <svg width="55" height="55" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" class="bg"></circle>
@@ -128,9 +138,6 @@
     </button>
 
     <script>
-        /* ========================= */
-        /* NPROGRESS */
-        /* ========================= */
         const bar = document.getElementById('nprogress-bar');
 
         function startLoading() {
@@ -142,11 +149,13 @@
             bar.style.width = '100%';
             setTimeout(() => {
                 bar.style.opacity = '0';
-                setTimeout(() => { bar.style.width = '0%'; }, 400);
+                setTimeout(() => {
+                    bar.style.width = '0%';
+                }, 400);
             }, 200);
         }
 
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const link = e.target.closest('a[href]');
             if (!link) return;
             const url = link.getAttribute('href');
@@ -156,9 +165,6 @@
 
         window.addEventListener('load', finishLoading);
 
-        /* ========================= */
-        /* SCROLL TO TOP + PROGRESS */
-        /* ========================= */
         const scrollBtn = document.getElementById('scrollTopBtn');
         const progressCircle = document.querySelector('#scrollTopBtn .progress');
 
@@ -171,12 +177,9 @@
             const scrollTop = window.scrollY;
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = scrollTop / docHeight;
-
-            // progress circle
             const offset = circumference - scrollPercent * circumference;
             progressCircle.style.strokeDashoffset = offset;
 
-            // show/hide with animation
             if (scrollTop > 200) {
                 scrollBtn.classList.add('show');
             } else {
@@ -184,7 +187,6 @@
             }
         });
 
-        // scroll to top
         scrollBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,

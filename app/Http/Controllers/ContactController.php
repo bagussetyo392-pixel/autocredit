@@ -10,14 +10,11 @@ class ContactController extends Controller
 {
     public function send(Request $request)
     {
-        // 🔒 Anti spam (honeypot)
         if ($request->website) {
             return $request->expectsJson()
                 ? response()->json(['success' => false, 'message' => 'Spam detected.'], 400)
                 : back();
         }
-
-        // ✅ Validasi
         $data = $request->validate([
             'nama'  => 'required|min:3',
             'email' => 'required|email',
@@ -26,11 +23,9 @@ class ContactController extends Controller
         ]);
 
         try {
-            // 📩 Kirim email
             Mail::to('emailkamu@gmail.com')
                 ->send(new ContactMail($data));
 
-            // ✅ AJAX → JSON | Non-AJAX → redirect
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => true,
@@ -39,7 +34,6 @@ class ContactController extends Controller
             }
 
             return back()->with('success', 'Pesan berhasil dikirim!');
-
         } catch (\Exception $e) {
 
             if ($request->expectsJson()) {

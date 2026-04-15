@@ -1,8 +1,5 @@
-{{-- contact/partials/_sidebar.blade.php --}}
-
 <div class="space-y-12 md:pl-8">
 
-    {{-- LAYANAN --}}
     <div>
         <h3 class="text-xs text-white/40 uppercase tracking-widest mb-5">
             Layanan
@@ -41,7 +38,7 @@
         </ul>
     </div>
 
-    {{-- KONTAK --}}
+
     <div>
         <h3 class="text-xs text-white/40 uppercase tracking-widest mb-5">
             Kontak
@@ -49,7 +46,7 @@
 
         <div class="space-y-3 text-sm">
 
-            <!-- Alamat -->
+
             <a href="https://maps.google.com/?q=Kendal+Jawa+Tengah+Indonesia" target="_blank"
                 class="flex items-center gap-3 text-white/50 hover:text-white transition group">
 
@@ -74,7 +71,6 @@
                 <span>WhatsApp</span>
             </a>
 
-            <!-- Email -->
             <a href="mailto:nexrigsupp0rt@gmail.com"
                 class="flex items-center gap-3 text-white/50 hover:text-white transition group">
 
@@ -90,7 +86,6 @@
         </div>
     </div>
 
-    {{-- NOTE --}}
     <div class="text-xs text-white/25 border-t border-white/5 pt-5 leading-relaxed">
         Informasi yang Anda berikan akan membantu kami memberikan analisis yang lebih akurat terkait kebutuhan kredit
         kendaraan Anda.

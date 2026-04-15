@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
     @include('partials.home.slider')
+
+    @include('partials.home.how-credit-works')
+
+    @include('partials.home.tips-kredit')
 
     <section class="max-w-5xl mx-auto px-6 py-16">
 
@@ -20,5 +23,4 @@
         </div>
 
     </section>
-
 @endsection

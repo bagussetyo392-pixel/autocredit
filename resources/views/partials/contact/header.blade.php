@@ -1,5 +1,3 @@
-{{-- contact/partials/_header.blade.php --}}
-
 <div class="mb-14">
     <p class="text-xs text-white/30 uppercase tracking-widest mb-3">
         Bantuan & Kontak

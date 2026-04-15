@@ -6,16 +6,16 @@
     <div class="relative text-center px-6 z-10" id="slider-container">
         <div id="slider-content" class="transition-all duration-700 ease-out transform translate-y-0 opacity-100">
             <p id="slide-label" class="text-[#E8FF47] text-xs font-semibold uppercase tracking-[0.2em] mb-4"
-               style="font-family:'Inter',sans-serif;">
-               Simulasi Kredit Terpercaya
+                style="font-family:'Inter',sans-serif;">
+                Simulasi Kredit Terpercaya
             </p>
             <h1 id="slide-title" class="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6 text-white"
                 style="font-family:'Playfair Display',serif;">
                 Hitung Cicilan <span class="text-[#E8FF47]">Mobil Impianmu</span>
             </h1>
             <p id="slide-desc" class="text-white/50 text-base md:text-lg max-w-lg mx-auto font-light"
-               style="font-family:'Inter',sans-serif;">
-               Transparan, akurat, dan mudah dipahami. Rencanakan keuanganmu sekarang.
+                style="font-family:'Inter',sans-serif;">
+                Transparan, akurat, dan mudah dipahami. Rencanakan keuanganmu sekarang.
             </p>
         </div>
     </div>
@@ -28,8 +28,7 @@
 </section>
 
 <script>
-    const slides = [
-        {
+    const slides = [{
             label: "Simulasi Kredit Terpercaya",
             title: "Hitung Cicilan <span style='color:#E8FF47'>Mobil Impianmu</span>",
             desc: "Transparan, akurat, dan mudah dipahami. Rencanakan keuanganmu sekarang."
@@ -56,34 +55,28 @@
         const container = document.getElementById('slider-content');
         const dots = document.querySelectorAll('.dot');
 
-        // 1. Animasi Keluar (Fade out & Slide up sedikit)
         container.style.opacity = '0';
         container.style.transform = 'translateY(-20px)';
 
         setTimeout(() => {
-            // 2. Ganti Content setelah teks hilang
             current = i;
             const s = slides[i];
-            
+
             document.getElementById('slide-label').innerText = s.label;
             document.getElementById('slide-title').innerHTML = s.title;
             document.getElementById('slide-desc').innerText = s.desc;
 
-            // 3. Reset posisi untuk animasi masuk (Slide dari bawah)
             container.style.transform = 'translateY(20px)';
-            
-            // Force Reflow agar browser sadar posisi sudah berubah
-            container.offsetHeight; 
 
-            // 4. Animasi Masuk
+            container.offsetHeight;
+
             container.style.opacity = '1';
             container.style.transform = 'translateY(0)';
 
-            // Update Dots
             dots.forEach((d, idx) => {
-                if(idx === i) {
+                if (idx === i) {
                     d.classList.replace('bg-white/20', 'bg-[#E8FF47]');
-                    d.classList.replace('w-3', 'w-8'); // Dot aktif jadi lebih panjang
+                    d.classList.replace('w-3', 'w-8');
                 } else {
                     d.classList.replace('bg-[#E8FF47]', 'bg-white/20');
                     d.classList.replace('w-8', 'w-3');
@@ -91,13 +84,12 @@
             });
 
             isAnimating = false;
-        }, 500); // Harus sinkron dengan durasi transition-all duration-700
+        }, 500);
     }
 
-    // Auto play
     let slideTimer = setInterval(() => goSlide((current + 1) % slides.length), 5000);
 
-    // Stop timer kalau user klik dot manual
+
     document.querySelectorAll('.dot').forEach(btn => {
         btn.addEventListener('click', () => clearInterval(slideTimer));
     });

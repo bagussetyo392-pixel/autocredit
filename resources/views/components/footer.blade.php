@@ -3,12 +3,10 @@
 
         <div class="flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
 
-            <!-- LEFT -->
             <p class="text-white/40 tracking-wide">
                 © 2026 AutoCredit
             </p>
 
-            <!-- RIGHT -->
             <p class="text-white/20 text-center md:text-right">
                 Dibuat untuk pembelajaran 
             </p>
