@@ -16,7 +16,7 @@ class ContactMail extends Mailable
     public function build()
     {
         return $this->subject('Pesan Baru dari AutoCredit')
-                    ->replyTo($this->data['email'], $this->data['nama'])
-                    ->view('emails.contact');
+            ->replyTo($this->data['email'], $this->data['nama'])
+            ->view('emails.contact');
     }
 }
